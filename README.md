@@ -4,8 +4,15 @@
 Parse values out of JSON from the commandline. Useful for automation.
 
 ## Usage
+`some.json`
 ```
-cj key < some.json
+{"key":"value","key2":[true, 1, "hello"]}
+```
+```
+$ cj key < some.json
+value
+$ cj key2 0
+true
 ```
 
 # Installation
@@ -18,5 +25,5 @@ This can be done by building as follows.
 swift build -c release -Xswiftc -static-stdlib
 ```
 
-The built executable is then available @ `.build/release/cj` this can be moved to your path for convenient use.
+The built executable is then available @ `.build/release/cj` this can be moved to your PATH for convenient use.
 
