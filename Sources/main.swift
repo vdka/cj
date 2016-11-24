@@ -14,7 +14,13 @@ if input.isEmpty || CommandLine.arguments.count == 1 {
   exit(1)
 }
 
-var json: JSON? = try? JSON.Parser.parse(input.joined(), options: .allowFragments)
+var json: JSON?
+do {
+    json = try JSON.Parser.parse(input.joined(), options: [.allowFragments, .allowComments])
+} catch {
+    print("error parsing JSON: \(error)")
+    exit(1)
+}
 
 for argument in CommandLine.arguments.dropFirst() {
 
